@@ -1,10 +1,12 @@
+from django.contrib.auth import get_user_model
 # from django.shortcuts import get_object_or_404
 from rest_framework import generics
 # from rest_framework import mixins
+from rest_framework import viewsets
 # from rest_framework.response import Response
 # from rest_framework.views import APIView
 from .models import Post
-from .serializers import PostSerializer
+from .serializers import PostSerializer, UserSerializer
 
 
 
@@ -84,3 +86,17 @@ class PostListAPIView(generics.ListCreateAPIView):
 class PostDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+
+
+# STEP #4 : Viewset 을 이용한 구현
+class UserViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = get_user_model().objects.all()
+    serializer_class = UserSerializer
+
+user_list = UserViewSet.as_view({
+    'get': 'list', # 호출될 함수와 호출할 함수를 지정
+})
+
+user_detail = UserViewSet.as_view({
+    'get': 'retrieve',
+})
