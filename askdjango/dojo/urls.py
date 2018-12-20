@@ -6,4 +6,5 @@ app_name = 'dojo'
 
 urlpatterns = [
     path('post', views.post_list),
+    path('post/<int:pk>', views.post_detail),
 ]

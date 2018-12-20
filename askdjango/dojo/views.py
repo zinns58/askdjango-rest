@@ -12,3 +12,7 @@ class PostViewSet(ReadOnlyModelViewSet):
 post_list = PostViewSet.as_view({
     'get': 'list'
 })
+
+post_detail = PostViewSet.as_view({
+    'get': 'retrieve',
+})
