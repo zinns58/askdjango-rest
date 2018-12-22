@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'blog',
-    'dojo',
+    'ep04',
+    'ep05',
 ]
 
 MIDDLEWARE = [

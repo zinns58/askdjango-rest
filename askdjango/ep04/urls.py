@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 from . import views
 
 
-app_name = 'blog'
+app_name = 'ep04'
 
 router = DefaultRouter()
 router.register(r'post', views.PostViewSet)
