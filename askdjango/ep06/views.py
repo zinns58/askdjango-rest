@@ -10,5 +10,9 @@ class PostViewSet(ModelViewSet):
     # class 내에 queryset에 조건을 추가할때 사용.
     def get_queryset(self):
         qs = super().get_queryset()
+        if self.request.user.is_authenticated:
+            qs = qs.filter(author=self.request.user)
+        else:
+            qs = qs.none()  # empty result
         qs = qs.filter(title__icontains='1')
         return qs
