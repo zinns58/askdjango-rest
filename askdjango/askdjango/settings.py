@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'ep04',
     'ep05',
     'ep06',
+    'ep08',
 ]
 
 MIDDLEWARE = [
