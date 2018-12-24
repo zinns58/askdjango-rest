@@ -7,6 +7,7 @@ from rest_framework import viewsets
 # from rest_framework.views import APIView
 from .models import Post
 from .serializers import PostSerializer, UserSerializer
+from .paginations import PostPageNumberPagination
 
 
 # STEP #1 : APIView 를 상속받아서 구현
@@ -91,6 +92,7 @@ from .serializers import PostSerializer, UserSerializer
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    pagination_class = PostPageNumberPagination
 
 
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
