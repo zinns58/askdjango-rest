@@ -9,3 +9,6 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ('-id', )    # model 에 지정해주는 기본 정렬
+
