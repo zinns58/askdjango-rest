@@ -12,9 +12,9 @@ from .serializers import PostSerializer
 class PostViewSet(ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    permission_classes = (
-        IsAuthorUpdateOrReadonly,
-    )
+    # permission_classes = (
+    #     IsAuthorUpdateOrReadonly,
+    # )
 
     # perform_ 계열 함수를 통해, API 수행 결과를 DB에 반영하는 create/update/destroy 함수를 커스텀
     # serializer.save 함수에 키워드 인자를 함께 DB 에 적용
@@ -65,7 +65,7 @@ def finished_fn(sender, **kwargs):
     total = cbv.db_time + cbv.serializer_time + cbv.api_view_time + cbv.render_time + request_response_time
 
     print('Total                            : {:.6f}s'.format(total))
-    print('Database Lookup - db_time        : {:.6f}s, {:>4.1f}%'.format(cbv.db_time, 100*(cbv.db_time/total)))
+    print('Database Lookup - db_time        : {:.6f}s, {:>4.1f}%'.format(cbv.db_time, 100 * (cbv.db_time / total)))
     print('Serializer - serializer_time     : {:.6f}s, {:>4.1f}%'.format(cbv.serializer_time, 100 * (cbv.serializer_time / total)))
     print('API View - api_view_time         : {:.6f}s, {:>4.1f}%'.format(cbv.api_view_time, 100 * (cbv.api_view_time / total)))
     print('Response rendering - render_time : {:.6f}s, {:>4.1f}%'.format(cbv.render_time, 100 * (cbv.render_time / total)))
