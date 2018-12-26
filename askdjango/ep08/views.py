@@ -41,7 +41,8 @@ class PostViewSet(ModelViewSet):
 
     def list(self, request, *args, **kwargs):
         db_start = time.time()
-        post_list = list(self.queryset)
+        # post_list = list(self.queryset)
+        data = self.queryset.values('author__username', 'message')
         self.db_time = time.time() - db_start
 
         serializer_start = time.time()
