@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'ep06',
     'ep08',
     'ep13',
+    'ep15',
 ]
 
 MIDDLEWARE = [
@@ -125,8 +126,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
     # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     # 'PAGE_SIZE': 20,
     #
@@ -136,4 +151,8 @@ REST_FRAMEWORK = {
     # 'DEFAULT_THROTTLE_RATES': {
     #     'user': '10/day',
     # }
+}
+
+JWT_AUTH = {
+    'JWT_ALLOW_REFRESH': True,
 }

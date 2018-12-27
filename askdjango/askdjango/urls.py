@@ -16,15 +16,22 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework.authtoken.views import obtain_auth_token
+from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token, verify_jwt_token
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api-token-auth/', obtain_auth_token),
+
+    path('api-jwt-auth/', obtain_jwt_token),
+    path('api-jwt-auth/refresh/', refresh_jwt_token),
+    path('api-jwt-auth/verify/', verify_jwt_token),
 
     path('ep04/', include('ep04.urls', namespace='ep04')),
     path('ep05/', include('ep05.urls', namespace='ep05')),
     path('ep06/', include('ep06.urls', namespace='ep06')),
     path('ep08/', include('ep08.urls', namespace='ep08')),
     path('ep13/', include('ep13.urls', namespace='ep13')),
+    path('ep15/', include('ep15.urls', namespace='ep15')),
 ]
