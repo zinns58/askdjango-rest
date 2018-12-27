@@ -1,6 +1,6 @@
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
-from ep13.views import PostViewSet
+from .views import PostViewSet
 
 
 app_name = 'ep13'
