@@ -73,5 +73,5 @@ def finished_fn(sender, **kwargs):
     print('Response rendering - render_time : {:.6f}s, {:>4.1f}%'.format(cbv.render_time, 100 * (cbv.render_time / total)))
     print('Django request/response          : {:.6f}s, {:>4.1f}%'.format(request_response_time, 100 * (request_response_time / total)))
 
-request_started.connect(started_fn)
-request_finished.connect(finished_fn)
+# request_started.connect(started_fn)
+# request_finished.connect(finished_fn)
